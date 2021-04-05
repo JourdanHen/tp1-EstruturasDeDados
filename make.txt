@@ -1,0 +1,27 @@
+
+	CC= g++
+CFLAGS= -Wall -CC
+
+tp1: main.cpp Batalha.o Mecanica.o Preparacao.o tipocelula.o Nave.o
+	$(CC) main.cpp Batalha.o Mecanica.o Preparacao.o tipocelula.o Nave.o -o tp1
+
+Batalha.o: Batalha.cpp
+	$(CC) $(CFLAGS) Batalha.cpp
+
+Mecanica.o: Mecanica.cpp
+	$(CC) $(CFLAGS) Mecanica.cpp
+
+Preparacao.o: Preparacao.cpp
+	$(CC) $(CFLAGS) Preparacao.cpp
+
+tipocelula.o: tipocelula.cpp
+	$(CC) $(CFLAGS) tipocelula.cpp
+
+Nave.o: Nave.cpp
+	$(CC) $(CFLAGS) Nave.cpp
+
+test: $(EXEC)
+	@bash run_tests.sh ./tp1 tp1.testresult
+
+clean:
+	rm -rf *.o tp1
